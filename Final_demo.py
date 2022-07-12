@@ -1,7 +1,3 @@
-# TODO: 
-    # option 3 messes up sometimes - maybe fixed
-    #when 404 need to give option to exit
- 
 from caller import call_api
 from switcher import validation, switch 
 from display import poke_info
