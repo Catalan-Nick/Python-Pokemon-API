@@ -1,7 +1,6 @@
 from caller import call_api
 from switcher import validation, switch 
 from display import poke_info
-
 user_choice = 0  
 while user_choice != 4:
 

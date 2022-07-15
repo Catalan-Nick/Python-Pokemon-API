@@ -15,3 +15,26 @@ def call_api(url):
         else:
             pokemon = None
         return pokemon
+def get_accuracy(url):
+    try:
+        req = requests.get(f"{url}")
+        move = req.json()
+        accuracy = move['accuracy']
+        if accuracy == None:
+            accuracy = "Status"
+        return accuracy
+    except:
+        accuracy = "No Move Found"
+        return accuracy
+
+def get_power(url):
+    try:
+        req = requests.get(f"{url}")
+        move = req.json()
+        power = move['power']
+        if power == None:
+            power = 0
+        return power
+    except:
+        power = "No Move Found"
+        return power

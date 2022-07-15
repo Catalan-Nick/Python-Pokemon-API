@@ -1,4 +1,6 @@
 from random import randrange
+from caller import get_accuracy, get_power
+
 
 def poke_info(pokemon):
     
@@ -33,15 +35,25 @@ def poke_info(pokemon):
     # get the length of how many moves there are,
     # use that number to make a random number
     # print the name of that move
+    # do it 4 times
     moves_length = len(pokemon['moves'])
-    
+    # print(len(pokemon['moves']))
     i = 0
     while(i < 4):
-        random_num = randrange(moves_length - 1)
+        if moves_length <= 1:
+            random_num = 0
+            i = 4
+        else:
+            random_num = randrange(moves_length - 1)
         move_entry = pokemon['moves']
         move_random = move_entry[random_num]
         move_random_entry = move_random.get('move')
         move_random_name = move_random_entry.get('name')
-        print(f"\t{move_random_name}")
+        # follow the moves url and get accuracy and power
+        url = move_random_entry.get('url')
+        accuracy = get_accuracy(url)
+        power = get_power(url)
+        
+        print(f"\t{move_random_name.capitalize()} Accuracy: {accuracy} " f"Power: {power}" if power else f"\t{move_random_name.capitalize()} Accuracy: {accuracy}")
         i = i + 1
     
